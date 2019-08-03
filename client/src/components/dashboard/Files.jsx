@@ -3,20 +3,19 @@ import { MDBDataTable, MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdbreact";
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import API from "./../../actions/API";
+import API from "../../actions/API";
 import { logoutUser } from "../../actions/authActions";
 
 //var userp = "";
 
 //const misFolders = [];
 var vusuario = "";
-class Dashboard extends Component {
+class Files extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      misFolders: [],
-      user: ""
+      misFiles: []
     };
   }
 
@@ -27,20 +26,14 @@ class Dashboard extends Component {
 
   //when this component mounts, grab all books that were save to the database
   componentDidMount() {
-    API.getFolder(vusuario)
-      .then(res => this.setState({ misFolders: res.data }))
+    API.getFile(vusuario)
+      .then(res => this.setState({ misFiles: res.data }))
       .catch(err => console.log(err));
   }
 
-  /* handleRowClick(nid) {
-    console.log("nid");
-    console.log(nid);
-  }
-*/
-
-  NewFolder = () => {
+  NewFile = () => {
     console.log("Redirect");
-    this.props.history.push("/newfolder");
+    this.props.history.push("/newfile");
     //return <Redirect to="/newfolder" />;
   };
 
@@ -50,32 +43,27 @@ class Dashboard extends Component {
 
   render() {
     const { user } = this.props.auth;
-    // this.state.user =  user.id ;
     vusuario = user.id;
 
-    //  console.log(misFolders);
-    //console.log(this.state.savedFolders);
-    //userp = user.id;
+    // const sFiles = { ...this.state.misFolders };
+    // console.log("this.state.misFolders");
+    // console.log(this.state.misFolders);
 
-    const sFolders = { ...this.state.misFolders };
-    console.log("this.state.misFolders");
-    console.log(this.state.misFolders);
-
-    let FoldersRow = [];
+    let FilesRow = [];
     var n;
     var click = "";
     var temporal = {};
     let varp = "";
-    for (n = 0; n < this.state.misFolders.length; n++) {
+    for (n = 0; n < this.state.misFiles.length; n++) {
       temporal = {};
       click =
-        "clickEvent: this.handleRowClick(" + this.state.misFolders[n]._id + ")";
+        "clickEvent: this.handleRowClick(" + this.state.misFiles[n]._id + ")";
       let varp = "";
-      varp = this.state.misFolders[n]._id;
+      varp = this.state.misFiles[n]._id;
       console.log(varp);
       temporal = {
-        foldername: this.state.misFolders[n].foldername,
-        description: this.state.misFolders[n].description,
+        filename: this.state.misFiles[n].filename,
+        filedescription: this.state.misFiles[n].filedescription,
         handle: (
           <MDBBtn color="green" rounded size="sm">
             Abrir
@@ -85,16 +73,16 @@ class Dashboard extends Component {
       };
       console.log("temporal");
       console.log(temporal);
-      FoldersRow.push(temporal);
+      FilesRow.push(temporal);
     }
 
     console.log("FoldersRow");
-    console.log(FoldersRow);
+    console.log(FilesRow);
 
     const data = {
       columns: [
         {
-          label: "Nombre del Folder",
+          label: "Archvivo",
           field: "foldername",
           sort: "asc",
           width: 150
@@ -112,7 +100,7 @@ class Dashboard extends Component {
           width: 150
         }
       ],
-      rows: FoldersRow
+      rows: FilesRow
       /* [
         //  FoldersRow
 
@@ -129,7 +117,7 @@ class Dashboard extends Component {
           <MDBRow className="row justify-content-end">
             <div className="row justify-content-end">
               <MDBCol>
-                <MDBBtn color="elegant" onClick={this.NewFolder}>
+                <MDBBtn color="elegant" onClick={this.NewFile}>
                   + Nueva Carpeta
                 </MDBBtn>
               </MDBCol>
@@ -166,7 +154,7 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.propTypes = {
+Files.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -178,4 +166,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Dashboard);
+)(Files);

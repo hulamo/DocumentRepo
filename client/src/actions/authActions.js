@@ -3,8 +3,24 @@ import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
-
+// headers: { 'Content-Type': 'multipart/form-data' }
 // Register User
+export const newFile = (userData, history) => dispatch => {
+    axios
+        .post("/api/files/newfile", userData, { headers: { 'Content-Type': 'multipart/form-data' } })
+        .then(res => {
+            console.log("userData " + userData)
+            history.push("/folders");
+        })
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+        );
+};
+
+
 export const newFolder = (userData, history) => dispatch => {
     axios
         .post("/api/folders/newfolder", userData)

@@ -31,6 +31,12 @@ export default {
     */
 
     getFolder: function(id) {
-        return axios.get("/api/folders/folder/" + "5d3a1e9df4347e8b20ada188");
+        console.log(id);
+        return axios.get("/api/folders/folder/" + id);
+    },
+
+    getFile: function(id) {
+        console.log(id);
+        return axios.get("/api/files/file/" + id);
     }
 }

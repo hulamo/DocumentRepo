@@ -20,7 +20,7 @@ const FileSchema = new mongoose.Schema({
 
     filelink: {
         type: String,
-        required: true
+        required: false
     },
 
     fileglink: {

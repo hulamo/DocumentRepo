@@ -24,6 +24,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Folders from "./components/dashboard/Folders";
 import NewFolder from "./components/dashboard/NewFolder";
 import NewFile from "./components/dashboard/NewFile";
+import Files from "./components/dashboard/Files";
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -60,6 +61,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/files" component={Files} />
               <PrivateRoute exact path="/folders" component={Folders} />
               <PrivateRoute exact path="/newfolder" component={NewFolder} />
               <PrivateRoute exact path="/newfile" component={NewFile} />
