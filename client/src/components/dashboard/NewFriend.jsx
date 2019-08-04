@@ -2,18 +2,18 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { newFolder } from "../../actions/authActions";
+import { newFriend } from "../../actions/authActions";
 import classnames from "classnames";
 import { MDBInput, MDBContainer, MDBCol, MDBRow, MDBBtn } from "mdbreact";
 
 //const usuario = this.props.auth;
 var vusuario = "";
 
-class NewFolder extends Component {
+class NewFriend extends Component {
   constructor() {
     super();
     this.state = {
-      user: vusuario,
+      id1: vusuario,
       foldername: "",
       description: ""
     };
@@ -22,7 +22,7 @@ class NewFolder extends Component {
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/newfolder");
+      this.props.history.push("/newfriend");
     }
   }
 
@@ -41,13 +41,13 @@ class NewFolder extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const newFolder = {
-      user: vusuario,
-      foldername: this.state.foldername,
-      description: this.state.description
+    const newFriend = {
+      id1: vusuario,
+      friendname: this.state.friendname,
+      friendemail: this.state.friendemail
     };
 
-    this.props.newFolder(newFolder, this.props.history);
+    this.props.newFriend(newFriend, this.props.history);
   };
 
   render() {
@@ -62,31 +62,24 @@ class NewFolder extends Component {
         <MDBRow>
           <MDBCol md="6">
             <form noValidate onSubmit={this.onSubmit}>
-              <p className="h4 text-center mb-4">New Folder</p>
+              <p className="h4 text-center mb-4">New Contact</p>
               <MDBInput
-                label="Folder Name"
+                label="Contact Name"
                 onChange={this.onChange}
-                value={this.state.foldername}
-                id="foldername"
+                value={this.state.friendname}
+                id="friendname"
                 type="text"
               />
               <MDBInput
-                hint="Folder Description"
-                type="text"
+                hint="Contact Email"
+                type="email"
                 onChange={this.onChange}
-                value={this.state.description}
-                id="description"
+                value={this.state.friendemail}
+                id="friendemail"
               />
-              <MDBInput
-                label="Make it Public"
-                filled
-                type="checkbox"
-                id="public"
-              />
-
               <div className="text-center mt-4">
                 <MDBBtn color="green" type="submit">
-                  Add New Folder
+                  Add New Contact
                 </MDBBtn>
               </div>
             </form>
@@ -97,8 +90,8 @@ class NewFolder extends Component {
   }
 }
 
-NewFolder.propTypes = {
-  newFolder: PropTypes.func.isRequired,
+NewFriend.propTypes = {
+  newFriend: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
 
@@ -108,5 +101,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { newFolder }
-)(withRouter(NewFolder));
+  { newFriend }
+)(withRouter(NewFriend));

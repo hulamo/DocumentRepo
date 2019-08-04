@@ -124,7 +124,10 @@ class Dashboard extends Component {
     };
 
     return (
-      <div style={{ height: "45vh" }} className="container valign-wrapper">
+      <div
+        style={{ topMargin: "200px", height: "45vh" }}
+        // className="container valign-wrapper"
+      >
         <MDBContainer>
           <MDBRow className="row justify-content-end">
             <div className="row justify-content-end">

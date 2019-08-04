@@ -7,7 +7,10 @@ const users = require("./routes/api/users");
 const folders = require("./routes/api/folders");
 const files = require("./routes/api/files");
 
+const friends = require("./routes/api/friends");
+
 const app = express();
+
 
 // Bodyparser middleware
 app.use(
@@ -35,6 +38,8 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 // Routes
+
+app.use("/api/friends", friends);
 app.use("/api/users", users);
 
 app.use("/api/folders", folders);

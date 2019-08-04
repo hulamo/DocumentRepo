@@ -7,7 +7,6 @@ import { newFile } from "../../actions/authActions";
 import classnames from "classnames";
 import DropzoneComponent from "react-dropzone-component";
 import axios from "axios";
-import { MDBInput, MDBContainer, MDBCol, MDBRow, MDBBtn } from "mdbreact";
 
 //const usuario = this.props.auth;
 var vusuario = "";
@@ -151,39 +150,72 @@ class NewFile extends Component {
     console.log("usuario:" + vusuario);
 
     return (
-      <MDBContainer>
-        <MDBRow>
-          <MDBCol md="6">
+      <div className="container">
+        <div className="row">
+          <div className="col s8 offset-s2">
+            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+              <h4>
+                <b>New File</b>
+              </h4>
+            </div>
             <form
               encType="multipart/form-data"
               noValidate
               onSubmit={this.onSubmit}
             >
-              <p className="h4 text-center mb-4">New File</p>
-              <MDBInput
-                label="File Name"
-                onChange={this.onChange}
-                value={this.state.filename}
-                id="filename"
-                type="text"
-              />
-              <MDBInput
-                label="File Description"
-                onChange={this.onChange}
-                value={this.state.description}
-                id="description"
-                type="text"
-              />
-              <MDBInput onChange={this.onChangef} type="file" />
-              <div className="text-center mt-4">
-                <MDBBtn color="green" type="submit">
-                  Add New File
-                </MDBBtn>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.user}
+                  id="user"
+                  type="hidden"
+                />
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.filename}
+                  id="filename"
+                  type="text"
+                />
+                <label htmlFor="name">File Name</label>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.description}
+                  id="description"
+                  type="text"
+                />
+                <label htmlFor="description">File Description</label>
+              </div>
+
+              <div>
+                <input
+                  onChange={this.onChangef}
+                  //value={this.state.file}
+                  //id="file"
+                  type="file"
+                />
+              </div>
+              <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+                <button
+                  style={{
+                    width: "150px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem"
+                  }}
+                  type="submit"
+                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                >
+                  New File
+                </button>
               </div>
             </form>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
+          </div>
+        </div>
+      </div>
     );
   }
 }

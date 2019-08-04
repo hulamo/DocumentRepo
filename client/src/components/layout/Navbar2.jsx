@@ -9,6 +9,13 @@ import {
   MDBNavbarNav,
   MDBNavItem,
   MDBNavLink,
+  MDBNavbarToggler,
+  MDBCollapse,
+  MDBDropdown,
+  MDBDropdownMenu,
+  MDBDropdownToggle,
+  MDBDropdownItem,
+  MDBFormInline,
   MDBBtn
 } from "mdbreact";
 
@@ -32,6 +39,14 @@ class Navbar2 extends Component {
     //return <Redirect to="/newfolder" />;
   };
 
+  /*
+<MDBNavItem>
+            <MDBBtn color="grey" onClick={this.NewFolder2}>
+              + Nueva Carpeta
+            </MDBBtn>
+          </MDBNavItem>
+*/
+
   render() {
     var navbarStyle = {
       marginTop: 64
@@ -39,17 +54,33 @@ class Navbar2 extends Component {
     const { user } = this.props.auth;
 
     return (
-      <MDBNavbar color="black" dark expand="md" style={navbarStyle}>
+      <MDBNavbar
+        fixed-top-2
+        fixed="top"
+        color="green darken-3"
+        dark
+        expand="md"
+        style={navbarStyle}
+      >
         <MDBNavbarBrand>
           <strong className="white-text">{user.name}</strong>
         </MDBNavbarBrand>
 
         <MDBNavbarNav left />
+
         <MDBNavbarNav right>
           <MDBNavItem>
-            <MDBBtn color="grey" onClick={this.NewFolder2}>
-              + Nueva Carpeta
-            </MDBBtn>
+            <MDBDropdown>
+              <MDBDropdownToggle nav caret>
+                <span className="mr-2">Add</span>
+              </MDBDropdownToggle>
+              <MDBDropdownMenu>
+                <MDBDropdownItem href="/newfolder">New Folder</MDBDropdownItem>
+                <MDBDropdownItem href="/newfile">New File</MDBDropdownItem>
+                <MDBDropdownItem href="#!">New Link</MDBDropdownItem>
+                <MDBDropdownItem href="/newfriend">New Contact</MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
           </MDBNavItem>
         </MDBNavbarNav>
       </MDBNavbar>

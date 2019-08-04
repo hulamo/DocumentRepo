@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { logoutUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import "./burger.css";
+
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -29,7 +31,13 @@ class Navbar extends Component {
   render() {
     return (
       <div className="">
-        <MDBNavbar color="indigo" dark expand="md" fixed="top">
+        <MDBNavbar
+          className="customC"
+          color="green darken-4"
+          dark
+          expand="md"
+          fixed="top"
+        >
           <MDBNavbarBrand>
             <strong className="white-text">DocumentRepo</strong>
           </MDBNavbarBrand>
