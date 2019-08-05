@@ -4,7 +4,7 @@
 
 .fixed-top-2 {
     margin-top: 56px;
-    position: relative;
+    position: realtive;
 }
 
 body {
@@ -12,5 +12,5 @@ body {
 }
 
 .customC {
-    position: absolute;
+    position: realtive;
 }

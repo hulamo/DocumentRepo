@@ -14,6 +14,9 @@ import { MDBContainer } from "mdbreact";
 
 import store from "./store";
 
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
 import Header from "./components/layout/Header";
 import Navbar2 from "./components/layout/Navbar2";
 import Navbar from "./components/layout/Navbartp";
@@ -30,9 +33,11 @@ import NewFriend from "./components/dashboard/NewFriend";
 import Files from "./components/dashboard/Files";
 import "./App.css";
 
+var renderbar = true;
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
+  renderbar = true;
   const token = localStorage.jwtToken;
   setAuthToken(token);
   // Decode token and get user info and exp
@@ -47,6 +52,7 @@ if (localStorage.jwtToken) {
 
     // Redirect to login
     window.location.href = "./login";
+    renderbar = false;
   }
 }
 class App extends Component {
@@ -56,9 +62,11 @@ class App extends Component {
         <Router>
           <div>
             <Navbar2 />
+
             <Navbar />
             <Margens />
             <Route exact path="/" component={Landing} />
+
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Switch>
@@ -75,4 +83,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;

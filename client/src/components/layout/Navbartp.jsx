@@ -14,6 +14,8 @@ import {
   MDBCollapse
 } from "mdbreact";
 
+var mostrar = true;
+
 class Navbar extends Component {
   state = {
     isOpen: false
@@ -29,6 +31,16 @@ class Navbar extends Component {
   };
   // "d-none d-md-block"
   render() {
+    const { user } = this.props.auth;
+
+    if (user.id) {
+      mostrar = true;
+      console.log("Mostrar" + mostrar);
+    } else {
+      mostrar = false;
+      console.log("No Mostrar" + mostrar);
+    }
+
     return (
       <div className="">
         <MDBNavbar
@@ -45,23 +57,25 @@ class Navbar extends Component {
           <MDBCollapse id="navbarCollapse11" isOpen={this.state.isOpen} navbar>
             <MDBNavbarNav left>
               <MDBNavItem>
-                <MDBNavLink to="/folders">Folders</MDBNavLink>
+                {mostrar && <MDBNavLink to="/folders">Folders</MDBNavLink>}
               </MDBNavItem>
               <MDBNavItem>
-                <MDBNavLink to="/files">Files</MDBNavLink>
+                {mostrar && <MDBNavLink to="/files">Files</MDBNavLink>}
               </MDBNavItem>
               <MDBNavItem>
-                <MDBNavLink to="/contacts">Contacts</MDBNavLink>
+                {mostrar && <MDBNavLink to="/contacts">Contacts</MDBNavLink>}
               </MDBNavItem>
             </MDBNavbarNav>
             <MDBNavbarNav right>
               <MDBNavItem>
-                <MDBNavLink to="/contacts">Account</MDBNavLink>
+                {mostrar && <MDBNavLink to="/contacts">Account</MDBNavLink>}
               </MDBNavItem>
               <MDBNavItem>
-                <MDBNavLink to="#" onClick={this.onLogoutClick}>
-                  Logout
-                </MDBNavLink>
+                {mostrar && (
+                  <MDBNavLink to="#" onClick={this.onLogoutClick}>
+                    Logout
+                  </MDBNavLink>
+                )}
               </MDBNavItem>
             </MDBNavbarNav>
           </MDBCollapse>
@@ -70,6 +84,7 @@ class Navbar extends Component {
     );
   }
 }
+
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
