@@ -1,5 +1,5 @@
 {
-    "name": "DocumentRepo",
+    "name": "documentrepo",
     "version": "1.0.0",
     "description": "DocumentRepo",
     "main": "server.js",

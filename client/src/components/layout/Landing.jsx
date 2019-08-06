@@ -32,7 +32,7 @@ class Landing extends Component {
                   className="fas fa-user-friends"
                   style={{ fontSize: "34px", color: "green" }}
                 />
-                <a style={{ fontSize: "24px" }}>&nbsp; With Your Friends </a>
+                <li style={{ fontSize: "24px" }}>&nbsp; With Your Friends </li>
               </MDBCol>
             </MDBRow>
             <MDBRow>
@@ -41,7 +41,7 @@ class Landing extends Component {
                   className="fas fa-user-cog"
                   style={{ fontSize: "34px", color: "green" }}
                 />
-                <a style={{ fontSize: "24px" }}> &nbsp; With Your Team </a>
+                <li style={{ fontSize: "24px" }}> &nbsp; With Your Team </li>
               </MDBCol>
             </MDBRow>
             <MDBRow>
@@ -50,7 +50,7 @@ class Landing extends Component {
                   className="fas fa-user"
                   style={{ fontSize: "34px", color: "green" }}
                 />
-                <a style={{ fontSize: "24px" }}> &nbsp; Make them Public </a>
+                <li style={{ fontSize: "24px" }}> &nbsp; Make them Public </li>
               </MDBCol>
             </MDBRow>
             <MDBRow>
@@ -59,15 +59,15 @@ class Landing extends Component {
                   className="fas fa-user-lock"
                   style={{ fontSize: "34px", color: "green" }}
                 />
-                <a style={{ fontSize: "24px" }}>&nbsp; Keep them Private </a>
+                <li style={{ fontSize: "24px" }}>&nbsp; Keep them Private </li>
               </MDBCol>
             </MDBRow>
             <br />
             <MDBRow>
               <MDBCol md="12">
-                <a style={{ fontSize: "44px" }}>
+                <li style={{ fontSize: "44px" }}>
                   You are in the right place...{" "}
-                </a>
+                </li>
               </MDBCol>
             </MDBRow>
           </MDBCol>
