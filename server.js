@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-
+const PORT = process.env.PORT || 5000;
 const users = require("./routes/api/users");
 const folders = require("./routes/api/folders");
 const files = require("./routes/api/files");
@@ -23,6 +23,12 @@ app.use(bodyParser.json());
 
 // DB Config
 const db = require("./config/keys").mongoURI;
+
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
+
 
 // Connect to MongoDB
 mongoose
@@ -46,10 +52,11 @@ app.use("/api/users", users);
 app.use("/api/folders", folders);
 app.use("/api/files", files);
 
-const port = process.env.PORT || 5000;
+//const port = process.env.PORT || 5000;
 
 
 app.use(express.static(__dirname + "/public"));
 
-
-app.listen(port, () => console.log(`Server up and running on port ${port} !`));
+app.listen(PORT, () => {
+    console.log(`🌎 ==> API server now on port ${PORT}!`);
+});
