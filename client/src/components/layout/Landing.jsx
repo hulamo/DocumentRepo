@@ -2,19 +2,19 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
-
+/*
+<img
+              src={process.env.PUBLIC_URL + "documentrepo.jpg"}
+              className="img-fluid mx-auto"
+              alt="aligment"
+            />
+*/
 class Landing extends Component {
   render() {
     return (
       <MDBContainer>
         <MDBRow className="mb-4">
-          <MDBCol md="6" className="mx-auto">
-            <img
-              src={process.env.PUBLIC_URL + "documentrepo.jpg"}
-              className="img-fluid mx-auto"
-              alt="aligment"
-            />
-          </MDBCol>
+          <MDBCol md="6" className="mx-auto" />
         </MDBRow>
 
         <MDBRow>

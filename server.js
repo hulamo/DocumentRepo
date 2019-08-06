@@ -16,7 +16,7 @@ const app = express();
 // Bodyparser middleware
 app.use(
     bodyParser.urlencoded({
-        extended: false
+        extended: true
     })
 );
 app.use(bodyParser.json());
@@ -55,7 +55,7 @@ app.use("/api/files", files);
 //const port = process.env.PORT || 5000;
 
 
-app.use(express.static(__dirname + "/public"));
+//app.use(express.static(__dirname + "/public"));
 
 app.listen(PORT, () => {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
