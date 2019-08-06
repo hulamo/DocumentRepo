@@ -1,7 +1,7 @@
 {
-    "name": "mern-auth",
+    "name": "DocumentRepo",
     "version": "1.0.0",
-    "description": "Mern Auth Example",
+    "description": "DocumentRepo",
     "main": "server.js",
     "scripts": {
         "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
