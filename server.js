@@ -12,6 +12,7 @@ const friends = require("./routes/api/friends");
 const app = express();
 
 
+
 // Bodyparser middleware
 app.use(
     bodyParser.urlencoded({
@@ -46,5 +47,9 @@ app.use("/api/folders", folders);
 app.use("/api/files", files);
 
 const port = process.env.PORT || 5000;
+
+
+app.use(express.static(__dirname + "/public"));
+
 
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));
